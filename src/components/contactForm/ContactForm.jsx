@@ -2,8 +2,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
+import { addContact } from "../../redux/contactsSlice";
+import { useDispatch } from "react-redux";
 
-export default function ContactForm({ addContact }) {
+export default function ContactForm() {
+  const dispatch = useDispatch();
   const nameId = useId();
   const numberId = useId();
 
@@ -13,7 +16,7 @@ export default function ContactForm({ addContact }) {
   };
 
   const handleSubmit = (values, actions) => {
-    addContact(values);
+   dispatch( addContact(values));
     actions.resetForm();
   };
 

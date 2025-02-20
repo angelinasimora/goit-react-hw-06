@@ -1,7 +1,11 @@
 import css from "./Contact.module.css";
 import { FaUser, FaPhoneAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+
 
 export default function Contact({ contact: { name, number, id }, delContact }) {
+  const dispatch = useDispatch();
+  
   return (
     <div className={css.card}>
       <div>
@@ -12,7 +16,7 @@ export default function Contact({ contact: { name, number, id }, delContact }) {
           <FaPhoneAlt /> {number}
         </div>
       </div>
-      <button className={css.delete} onClick={() => delContact(id)}>
+      <button className={css.delete} onClick={() => dispatch(delContact(id))}>
         Delete
       </button>
     </div>
